@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+option java_package = "com.ps.assignment3";
+
+service medication{
+    rpc getAll(Empty) returns(MedicationList);
+    rpc getById(IdMessage) returns(Medication);
+    rpc deleteById(IdMessage) returns (Empty);
+}
+
+message Empty{
+
+}
+
+message IdMessage{
+    int32 medicationId=1;
+}
+
+message Medication{
+    int32 medicationId = 1;
+    string description = 2;
+    string start = 3;
+    string end = 4;
+}
+
+message MedicationList{
+    repeated Medication meds = 1;
+}
